@@ -46,4 +46,7 @@ function checkLowStock (inventory) {
       return "No items are low in stock."; //logging message for no low stock items
   }
 
-  
+//Task 5: Create a Function to Calculate Total Inventory Value
+function calculateInventoryValue(inventory){
+    return inventory.reduce((total, product) => total + product.quantity*product.price, 0)
+} //usign reduce method to calculate total inventory value
