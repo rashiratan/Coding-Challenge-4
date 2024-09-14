@@ -24,7 +24,7 @@ function updateStock(product, unitsSold) {
         //using the for-of method to update product object in intial inventory array
         if (item.name === product.name){
             if(unitsSold > item.quantity) {
-                return `Unable to update as there are only ${item.quantity} pieces of this item available.`//ensuring sale quantity is per availability.
+                return `Unable to update as there are only ${item.quantity} pieces of this item available.`//ensuring sale quantity is per availability
             }
         item.quantity -= unitsSold;
         return `${item.name} is now ${StockStatus(item)} after updating quantity to ${item.quantity}.`//logging the update stock information
@@ -33,3 +33,17 @@ function updateStock(product, unitsSold) {
     
         }
 }
+
+//Task 4: Create a Function to Check Low Stock Products
+
+function checkLowStock (inventory) {
+    for (let product of inventory) {
+      if (StockStatus(product) === "Low Stock") //condition to check product status
+          {
+          return product.name; //logging products that are out of stock
+          }
+      }   
+      return "No items are low in stock."; //logging message for no low stock items
+  }
+
+  
