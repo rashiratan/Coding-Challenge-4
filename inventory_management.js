@@ -29,9 +29,10 @@ function updateStock(product, unitsSold) {
         item.quantity -= unitsSold;
         return `${item.name} is now ${StockStatus(item)} after updating quantity to ${item.quantity}.`//logging the update stock information
         }
+    }
+    //making sure that this return is outside of loop to make the function iterate over all product objects
         return 'Invalid product';//ensuring product exists in inventory
-    
-        }
+
 }
 
 //Task 4: Create a Function to Check Low Stock Products
@@ -50,3 +51,14 @@ function checkLowStock (inventory) {
 function calculateInventoryValue(inventory){
     return inventory.reduce((total, product) => total + product.quantity*product.price, 0)
 } //usign reduce method to calculate total inventory value
+
+//Task 6: Create a Function to Process a Sale
+function processSale(name, unitsSold) {
+    productFound = inventory.find((product) => name === product.name); //using find() to match product name
+        if (productFound !== undefined) {
+        return updateStock(productFound, unitsSold); //using pre-created function to update stock in process sale
+    }
+    else {
+        return `Product not found in the inventory. Please enter a different name.`; //logging error if product not found
+    }
+}
