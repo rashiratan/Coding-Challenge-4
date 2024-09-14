@@ -17,3 +17,19 @@ function displayProductDetails(product){
     return `The name of the product is ${product.name}, priced at ${product.price}, with a quantity of ${product.quantity} indicating the stock status of ${StockStatus(product)}.`;
 } 
 //log the stock status
+
+//Task 3: Create a Function to Update Product Stock After Sales
+function updateStock(product, unitsSold) {
+    for (let item of inventory) {
+        //using the for-of method to update product object in intial inventory array
+        if (item.name === product.name){
+            if(unitsSold > item.quantity) {
+                return `Unable to update as there are only ${item.quantity} pieces of this item available.`//ensuring sale quantity is per availability.
+            }
+        item.quantity -= unitsSold;
+        return `${item.name} is now ${StockStatus(item)} after updating quantity to ${item.quantity}.`//logging the update stock information
+        }
+        return 'Invalid product';//ensuring product exists in inventory
+    
+        }
+}
